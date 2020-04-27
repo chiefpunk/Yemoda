@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: gray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+.Container {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submit_button {
+  background: blue;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 130px;
 }
