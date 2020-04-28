@@ -2,11 +2,11 @@ const { override } = require("customize-cra");
 const cspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
 
 const cspConfigPolicy = {
-  "default-src": "'none'",
-  "base-uri": "'self'",
-  "object-src": "'none'",
-  "script-src": ["'self'"],
-  "style-src": ["'self'"],
+  "default-src": "*",
+  "object-src": "*",
+  "script-src": ["*", "'unsafe-inline'", "'unsafe-eval'"],
+  "style-src": "*",
+  "connect-src": "*",
 };
 
 function addCspHtmlWebpackPlugin(config) {

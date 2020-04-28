@@ -40,5 +40,6 @@
     "csp-html-webpack-plugin": "^4.0.0",
     "customize-cra": "^0.9.1",
     "react-app-rewired": "^2.1.5"
-  }
+  },
+  "proxy": "http://localhost:4000/"
 }

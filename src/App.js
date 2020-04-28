@@ -25,17 +25,38 @@ function App() {
     });
   }, []);
   const onClick = () => {
-    axios
-      .post("http://youta-api.ngrok.io/starter-project", {
-        timestamp: utc_timestamp,
-        username: "user@user.com",
-        domain: domain,
-        url: fullUrl,
-      })
-      .then((response) => {
+    const obj = {
+      timestamp: utc_timestamp,
+      username: "user@user.com",
+      domain: domain,
+      url: fullUrl,
+    };
+    const username = {
+      username: "admin",
+      password: "admin",
+    };
+    console.log(JSON.stringify(username));
+    return new Promise((resolve, reject) => {
+      fetch("http://youta-api.ngrok.io/starter-project", {
+        method: "post",
+        headers: {
+          Origin: "",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+          "Access-Control-Max-Age": "0",
+          "Content-Security-Policy":
+            "default-src *; connect-src *; script-src *; object-src *;",
+          "X-Content-Security-Policy":
+            "default-src *; connect-src *; script-src *; object-src *;",
+          "X-Webkit-CSP":
+            "default-src *; connect-src *; script-src 'unsafe-inline' 'unsafe-eval' *; object-src *",
+        },
+        body: JSON.stringify(obj),
+      }).then((response) => {
         console.log(response);
-        //setData(response.data);
+        setSuccess(response.status);
       });
+    });
   };
   return (
     <div className="App">
@@ -44,6 +65,7 @@ function App() {
         <button onClick={() => onClick()} className="submit_button">
           Submit
         </button>
+        <h2>{success === 200 ? "Success" : ""}</h2>
       </header>
     </div>
   );
