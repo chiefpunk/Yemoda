@@ -31,11 +31,6 @@ function App() {
       domain: domain,
       url: fullUrl,
     };
-    const username = {
-      username: "admin",
-      password: "admin",
-    };
-    console.log(JSON.stringify(username));
     return new Promise((resolve, reject) => {
       fetch("http://youta-api.ngrok.io/starter-project", {
         method: "post",
@@ -52,10 +47,12 @@ function App() {
             "default-src *; connect-src *; script-src 'unsafe-inline' 'unsafe-eval' *; object-src *",
         },
         body: JSON.stringify(obj),
-      }).then((response) => {
-        console.log(response);
-        setSuccess(response.status);
-      });
+      })
+        .then((response) => response)
+        .then((data) => {
+          console.log("Success:", data);
+          setSuccess(200);
+        });
     });
   };
   return (
